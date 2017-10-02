@@ -11,7 +11,7 @@
 #include <string.h>
 
 #define MAX_INPUT_LEN (1024)
-#define MAX_CMD_NUM (128)
+#define MAX_CMD_LEN (128)
 #define MAX_PATH_LEN (2048)
 #define MAX_CURRENT_DIR_LEN (512)
 
@@ -25,7 +25,7 @@ void intHandler(int child);
 int main(){
 	int status;
 	char input[MAX_INPUT_LEN];
-	char* cmd[MAX_CMD_NUM];
+	char* cmd[MAX_CMD_LEN];
 	int pathfile;
 	char path[MAX_PATH_LEN];
 	char cwd[MAX_CURRENT_DIR_LEN];
@@ -78,7 +78,7 @@ int main(){
 void cmdSplit(char* input, char** cmd){
 	int pos = 0, vec = 0;
 
-	while(input[pos] != '\0' && pos < MAX_INPUT_LEN && vec < MAX_CMD_NUM - 1){
+	while(input[pos] != '\0' && pos < MAX_INPUT_LEN && vec < MAX_CMD_LEN - 1){
 		while(input[pos] == ' '){
 			pos++;
 			continue;
